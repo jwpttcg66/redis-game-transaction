@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c751417-2b02-477d-be9f-6560871649d1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/redis/transaction/enums/GameTransactionCommitResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="redisgametransaction.iws" />
@@ -680,12 +678,19 @@
       <updated>1480163967363</updated>
       <workItem from="1480163968630" duration="1036000" />
       <workItem from="1480165355030" duration="58000" />
-      <workItem from="1480165462695" duration="152000" />
+      <workItem from="1480165462695" duration="179000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1480165639031</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1480165639031</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1246000" />
+    <option name="totallyTimeSpent" value="1273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1440" height="743" extended-state="0" />
@@ -719,6 +724,12 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
