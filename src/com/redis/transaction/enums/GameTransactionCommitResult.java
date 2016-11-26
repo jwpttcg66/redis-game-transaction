@@ -2,6 +2,7 @@ package com.redis.transaction.enums;
 
 /**
  * Created by jiangwenping on 16/11/26.
+ * 事务执行结果
  */
 public class  GameTransactionCommitResult {
     /** 成功*/
