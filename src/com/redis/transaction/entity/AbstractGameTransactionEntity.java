@@ -18,7 +18,7 @@ import java.util.BitSet;
  */
 public abstract class AbstractGameTransactionEntity implements GameTransactionEntityInterface {
 
-    protected static Logger transactionLogger = Loggers.redisLogger;
+    protected static Logger transactionLogger = Loggers.transactionLogger;
 
     /** 进度设置集合 主要用于rollback*/
     private BitSet progressBitSet;
