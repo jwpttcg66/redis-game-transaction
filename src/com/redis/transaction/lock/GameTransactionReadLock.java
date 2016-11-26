@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 
 /**
  * Created by jiangwenping on 16/11/26.
+ * 读锁
  */
 public class GameTransactionReadLock implements GameTransactionLockInterface {
 

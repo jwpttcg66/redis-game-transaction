@@ -7,6 +7,7 @@ import redis.clients.jedis.JedisPool;
 
 /**
  * Created by jiangwenping on 16/11/26.
+ * 提供redis读取服务
  */
 public class RedisService{
 

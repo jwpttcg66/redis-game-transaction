@@ -4,6 +4,7 @@ import com.redis.transaction.enums.GameTransactionCommitResult;
 
 /**
  * Created by jiangwenping on 16/11/26.
+ * 事务锁运行时异常
  */
 public class GameTransactionException extends RuntimeException {
 

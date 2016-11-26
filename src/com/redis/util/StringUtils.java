@@ -2,6 +2,7 @@ package com.redis.util;
 
 /**
  * Created by jiangwenping on 16/11/26.
+ * 通用服务类
  */
 public class StringUtils {
     public static String DEFAULT_SPLIT="#";

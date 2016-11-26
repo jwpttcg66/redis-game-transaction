@@ -10,7 +10,8 @@ import com.redis.util.TimeUtil;
 import org.slf4j.Logger;
 
 /**
- * Created by jiangwenping on 16/11/26.
+ * Created by jiangwenping on 16/11/26
+ * 写锁
  */
 public class GameTransactionLock implements GameTransactionLockInterface {
 
@@ -34,6 +35,18 @@ public class GameTransactionLock implements GameTransactionLockInterface {
         this.lockTime = lockTime;
         this.forceFlag = forceFlag;
     }
+
+    public GameTransactionLock(String lockKey, RedisService redisService, GameTransactionEntityCause gameTransactionEntityCause,long lockTime, boolean forceFlag, String lockContent) {
+        super();
+        this.lockKey = lockKey;
+        this.redisService = redisService;
+        this.gameTransactionEntityCause = gameTransactionEntityCause;
+        this.lockState = GameTransactionLockStateEnum.init;
+        this.lockTime = lockTime;
+        this.forceFlag = forceFlag;
+        this.lockContent = lockContent;
+    }
+
 
     /** 对应的锁key*/
     private String lockKey;

@@ -14,12 +14,13 @@ import java.util.BitSet;
 
 /**
  * Created by jiangwenping on 16/11/26.
+ * 抽象事务实体
  */
 public abstract class AbstractGameTransactionEntity implements GameTransactionEntityInterface {
 
     protected static Logger transactionLogger = Loggers.redisLogger;
 
-    /** 进度设置集合*/
+    /** 进度设置集合 主要用于rollback*/
     private BitSet progressBitSet;
 
     /** 事务锁*/
