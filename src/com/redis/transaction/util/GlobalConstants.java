@@ -25,6 +25,6 @@ public class GlobalConstants {
         /**pool*/
         public static final String REDIS_POOL_CONIFG="redis-pool-config.xml";
         /**redis*/
-        public static final String REDIS="redis.xml";
+        public static final String REDIS="redis_data.xml";
     }
 }
