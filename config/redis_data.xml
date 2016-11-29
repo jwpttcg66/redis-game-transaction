@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config id="redisPool" class="redis.clients.jedis.JedisPool" host="10.211.55.3" port="6374" timeout="3000" password="" database="0">
+<!--
+<config id="redisPool" class="redis.clients.jedis.JedisPool" host="10.211.55.3" port="6374" timeout="3000" password="XXXX" database="0">
+</config>-->
+
+<config id="redisPool" class="redis.clients.jedis.JedisPool" host="10.211.55.3" port="6379" timeout="3000"  database="0">
 </config>
+

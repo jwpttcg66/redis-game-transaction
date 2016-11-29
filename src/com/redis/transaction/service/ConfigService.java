@@ -33,10 +33,14 @@ public class ConfigService {
         Element element = JdomUtils.getRootElemet(FileUtil.getConfigURL(GlobalConstants.ConfigFile.REDIS).getFile());
         String host = element.getAttribute("host").getValue();
         int port = element.getAttribute("port").getIntValue();
-        int timeout = element.getAttribute("timeout").getIntValue();
-        String password = element.getAttribute("password").getValue();
+        boolean hasPassword = element.getAttribute("password") != null;
         int database = element.getAttribute("database").getIntValue();
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, database);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port);
+        if(hasPassword) {
+            int timeout = element.getAttribute("timeout").getIntValue();
+            String password = element.getAttribute("password").getValue();
+            jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password, database);
+        }
         return jedisPool;
     }
 }
