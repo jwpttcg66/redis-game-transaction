@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ************************ 全局配置信息 ************************ -->
+<config id="poolConfig" class="redis.clients.jedis.JedisPoolConfig"   maxIdle="30" testWhileIdle="true" timeBetweenEvictionRunsMillis="60000"
+	 numTestsPerEvictionRun="30" minEvictableIdleTimeMillis="60000"> 
+</config>
+	
