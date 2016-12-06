@@ -1,13 +1,12 @@
-package com.redis.transaction;
+package com.redis.transaction.service;
 
-import com.redis.transaction.service.ConfigService;
-import com.redis.transaction.service.RedisService;
+import org.jdom.DataConversionException;
 
 /**
- * Created by jiangwenping on 16/11/29.
+ * Created by jiangwenping on 16/12/6.
  */
-public class Main {
-    public static void main(String[] args) throws  Exception{
+public class RedisServiceTest {
+    public static void main(String[] args) throws DataConversionException {
         ConfigService configService = new ConfigService();
         RedisService redisService = new RedisService();
         redisService.setJedisPool(configService.initRedis(configService.initRediPoolConfig()));
