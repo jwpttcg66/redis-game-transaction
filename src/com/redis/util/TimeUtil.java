@@ -14,4 +14,10 @@ public class TimeUtil {
     public static long ONE_DAY = 24 * ONE_HOUR;
 
     public static int MINUTE_SECOND = (int) (MINUTE / SECOND);
+
+
+    public static long getSeconds(){
+        long now = System.currentTimeMillis();
+        return now / SECOND;
+    }
 }
