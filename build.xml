@@ -8,7 +8,7 @@
     <property name="jar.dir" value="./dist"/>
     <property name="bin.dir" value="./dist/bin"/>
     <property name="JAVA_HOME" value="${env.JAVA_HOME}"/>
-    <property name="vesion" value="1.1"/>
+    <property name="vesion" value="1.0"/>
     <!-- 引入宏定义文件  -->
 
     <path id="classpath">

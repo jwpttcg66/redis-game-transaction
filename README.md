@@ -9,5 +9,6 @@
 3.提交锁实体跟事务  transactionService.commitTransaction里面提交.
 3.后去事务提交结果 根据返回值做出判断.
 
+代码最后通过ant打包,发布代码存在dist下
 作者qq 330258845
 QQ群310158485
