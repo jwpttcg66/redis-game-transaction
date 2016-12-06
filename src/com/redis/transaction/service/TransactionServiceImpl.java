@@ -17,9 +17,6 @@ public class TransactionServiceImpl implements TransactionService{
 
     protected final Logger logger = Loggers.transactionLogger;
 
-    /** 公会数据*/
-    private RedisService redisService;
-
     public GameTransactionCommitResult commitTransaction(GameTransactionCause gameTransactionCause, AbstractGameTransactionEntity... abstractGameTransactionEntity){
         GameTransactionCommitResult gameTransactionTryCommitResult = GameTransactionCommitResult.SUCCESS;
         GameTransaction gameTransaction = new GameTransaction(gameTransactionCause);
