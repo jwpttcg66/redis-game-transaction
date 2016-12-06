@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="redisgametransaction" basedir="." default="jar">
+
+    <property environment="env"/>
+
+    <property name="src.dir" value="src"/>
+    <property name="libs.dir" value="./lib"/>
+    <property name="jar.dir" value="./dist"/>
+    <property name="bin.dir" value="./dist/bin"/>
+    <property name="JAVA_HOME" value="${env.JAVA_HOME}"/>
+    <property name="vesion" value="1.0"/>
+    <!-- 引入宏定义文件  -->
+
+    <path id="classpath">
+        <fileset dir="${libs.dir}"	includes="*.jar"/>
+    </path>
+    <target name="init">
+
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${bin.dir}"/>
+        <javac debug="true" srcdir="${src.dir}"  destdir="${bin.dir}" classpathref="classpath" encoding="UTF-8" memoryMaximumSize="500M" fork="true">
+        </javac>
+    </target>
+
+    <target name="clear">
+        <delete file="${jar.dir}/${ant.project.name}.jar"/>
+        <delete dir="${bin.dir}"/>
+    </target>
+
+    <target name="jar" depends="clear,compile">
+        <jar destfile="${jar.dir}/${ant.project.name}_${vesion}.jar" basedir="${bin.dir}"/>
+    </target>
+
+</project>
