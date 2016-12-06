@@ -36,7 +36,7 @@ public class RedisService{
     /*
      * 释放错误链接
      */
-    private void returnBrokenResource(Jedis jedis,String name,Exception msge){
+    private void returnBrokenResource(Jedis jedis,String name,Exception exception){
 //        logger.error(TimeUtils.dateToString(new Date())+":::::"+name+":::::"+msge.getMessage(), msge);
         if (jedis != null) {
             try {
@@ -44,6 +44,9 @@ public class RedisService{
             } catch (Exception e) {
                 logger.error(e.toString(), e);
             }
+        }
+        if(exception != null){
+            logger.error(exception.toString(), exception);
         }
     }
 
