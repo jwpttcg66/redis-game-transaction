@@ -1,4 +1,4 @@
-package com.redis.transaction.entity;
+package com.redis.transaction;
 
 import com.redis.transaction.enums.GameTransactionCause;
 
@@ -7,9 +7,8 @@ import com.redis.transaction.enums.GameTransactionCause;
  */
 public class GameTransactionCauseImpl extends GameTransactionCause{
     public static GameTransactionCauseImpl test = new GameTransactionCauseImpl("testTransAction");
-    private String cause;
 
     public GameTransactionCauseImpl(String cause) {
-        this.cause = cause;
+        super(cause);
     }
 }

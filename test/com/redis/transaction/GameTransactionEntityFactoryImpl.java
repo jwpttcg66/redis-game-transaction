@@ -1,5 +1,6 @@
-package com.redis.transaction.entity;
+package com.redis.transaction;
 
+import com.redis.transaction.entity.TestMutexEntity;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.factory.GameTransactionEntityFactory;
 import com.redis.transaction.service.RedisService;
@@ -9,7 +10,7 @@ import com.redis.transaction.service.RedisService;
  */
 public class GameTransactionEntityFactoryImpl extends GameTransactionEntityFactory {
 
-    public  static TestMutexEntity  createTestMutexEntity(GameTransactionEntityCause cause, String union, RedisService redisService){
+    public  static TestMutexEntity createTestMutexEntity(GameTransactionEntityCause cause, String union, RedisService redisService){
         String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, union);
         TestMutexEntity testMutexEntity = new TestMutexEntity(cause, union, redisService);
         return testMutexEntity;

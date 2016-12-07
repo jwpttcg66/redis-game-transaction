@@ -5,5 +5,9 @@ package com.redis.transaction.enums;
  * 提交事务的原因
  */
 public class  GameTransactionCause {
+    private String cause;
 
+    public GameTransactionCause(String cause) {
+        this.cause = cause;
+    }
 }

@@ -1,4 +1,4 @@
-package com.redis.transaction.entity;
+package com.redis.transaction;
 
 import com.redis.transaction.enums.GameTransactionEntityCause;
 

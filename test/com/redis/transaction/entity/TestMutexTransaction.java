@@ -1,5 +1,8 @@
 package com.redis.transaction.entity;
 
+import com.redis.transaction.GameTransactionCauseImpl;
+import com.redis.transaction.GameTransactionEntityCauseImpl;
+import com.redis.transaction.GameTransactionEntityFactoryImpl;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.service.ConfigService;
 import com.redis.transaction.service.RedisService;
