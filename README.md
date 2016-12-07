@@ -9,6 +9,12 @@
 3.提交锁实体跟事务  transactionService.commitTransaction里面提交.
 4.后去事务提交结果 根据返回值做出判断.
 
+读取锁使用例子 可参考test下的read 可以设置默认是否成功读取到
+1.生成读取事务原因 GameTransactionCause里面已经构造好了.
+2.生成读取锁实体 GameTransactionEntityFactory里面已经构造好了.
+3.提交读取锁实体跟事务  transactionService.commitTransaction里面提交.
+4.后去事务提交结果 根据返回值做出判断.
+
 代码最后通过ant打包,发布代码存在dist下
 作者qq 330258845
 QQ群310158485
