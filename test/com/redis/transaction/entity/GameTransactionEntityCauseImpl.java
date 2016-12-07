@@ -8,10 +8,9 @@ import com.redis.transaction.enums.GameTransactionEntityCause;
 public class GameTransactionEntityCauseImpl extends GameTransactionEntityCause{
     public static final GameTransactionEntityCause test = new GameTransactionEntityCauseImpl("test");
 
-    public GameTransactionEntityCauseImpl(String gameTransactionEntityCause) {
-        this.gameTransactionEntityCause = gameTransactionEntityCause;
+    public GameTransactionEntityCauseImpl(String gameTransactionEntityCause)
+    {
+        super(gameTransactionEntityCause);
     }
-
-    private String gameTransactionEntityCause;
 
 }

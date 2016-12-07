@@ -27,4 +27,11 @@ public class GlobalConstants {
         /**redis*/
         public static final String REDIS="redis_data.xml";
     }
+
+    /**
+     * redis Key的基本配置
+     */
+    public static class Strings{
+        public static final String commonSplitString = "#";
+    }
 }
