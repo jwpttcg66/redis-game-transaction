@@ -14,7 +14,7 @@ public class TimeUtil {
     public static long ONE_DAY = 24 * ONE_HOUR;
 
     public static int MINUTE_SECOND = (int) (MINUTE / SECOND);
-
+    public static int SIX_HOUR_SECOND = (int) (SIX_HOUR / SECOND);
 
     public static long getSeconds(){
         long now = System.currentTimeMillis();

@@ -9,6 +9,7 @@ public class GameTransactionCauseImpl extends GameTransactionCause{
     public static GameTransactionCauseImpl test = new GameTransactionCauseImpl("testTransAction");
     public static GameTransactionCauseImpl read = new GameTransactionCauseImpl("readTransAction");
     public static GameTransactionCauseImpl attchment = new GameTransactionCauseImpl("attchmentTransAction");
+    public static GameTransactionCauseImpl force = new GameTransactionCauseImpl("forceTransAction");
     public GameTransactionCauseImpl(String cause) {
         super(cause);
     }
