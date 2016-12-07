@@ -1,6 +1,5 @@
 package com.redis.transaction;
 
-import com.redis.transaction.entity.RedisKey;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.factory.GameTransactionKeyFactory;
 
