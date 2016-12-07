@@ -8,7 +8,7 @@ import com.redis.transaction.enums.GameTransactionEntityCause;
 public class GameTransactionEntityCauseImpl extends GameTransactionEntityCause{
     public static final GameTransactionEntityCause test = new GameTransactionEntityCauseImpl("test");
     public static final GameTransactionEntityCause read = new GameTransactionEntityCauseImpl("read");
-
+    public static final GameTransactionEntityCause attchment = new GameTransactionEntityCauseImpl("attchment");
     public GameTransactionEntityCauseImpl(String gameTransactionEntityCause)
     {
         super(gameTransactionEntityCause);

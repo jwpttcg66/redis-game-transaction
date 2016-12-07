@@ -3,6 +3,7 @@ package com.redis.transaction.entity;
 import com.redis.transaction.GameTransactionCauseImpl;
 import com.redis.transaction.GameTransactionEntityCauseImpl;
 import com.redis.transaction.GameTransactionEntityFactoryImpl;
+import com.redis.transaction.RedisKey;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.service.ConfigService;
 import com.redis.transaction.service.RedisService;
@@ -21,7 +22,7 @@ public class TestMutexTransaction {
 
         TransactionService transactionService = new TransactionServiceImpl();
         String union = "union";
-        TestMutexEntity testMutexEntity = GameTransactionEntityFactoryImpl.createTestMutexEntity(GameTransactionEntityCauseImpl.test, union, redisService);
+        TestMutexEntity testMutexEntity = GameTransactionEntityFactoryImpl.createTestMutexEntity(GameTransactionEntityCauseImpl.test, redisService, RedisKey.player,  union);
         GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.test, testMutexEntity);
         System.out.println(commitResult.getReuslt());
     }

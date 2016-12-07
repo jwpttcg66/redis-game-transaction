@@ -10,8 +10,8 @@ import com.redis.transaction.service.RedisService;
  */
 public class GameTransactionEntityFactoryImpl extends GameTransactionEntityFactory {
 
-    public  static TestMutexEntity createTestMutexEntity(GameTransactionEntityCause cause, String union, RedisService redisService){
-        String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, union);
+    public  static TestMutexEntity createTestMutexEntity(GameTransactionEntityCause cause,RedisService redisService, String redisKey, String union){
+        String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, redisKey, union);
         TestMutexEntity testMutexEntity = new TestMutexEntity(cause, union, redisService);
         return testMutexEntity;
     }
