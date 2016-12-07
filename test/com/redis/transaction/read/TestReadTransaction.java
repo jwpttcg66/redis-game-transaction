@@ -26,8 +26,8 @@ public class TestReadTransaction {
         GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEnity);
         System.out.println(commitResult.getReuslt());
 
-        CommonReadTransactionEnity commonReadTransactionEnity1ReadTransactionEnity = GameTransactionEntityFactoryImpl.createCommonReadRejectTransactionEnity(GameTransactionEntityCauseImpl.read, redisService, RedisKey.common, union);
-        commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEnity);
+        CommonReadTransactionEnity commonRejectReadTransactionEnity = GameTransactionEntityFactoryImpl.createCommonReadRejectTransactionEnity(GameTransactionEntityCauseImpl.read, redisService, RedisKey.common, union);
+        commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonRejectReadTransactionEnity);
         System.out.println(commitResult.getReuslt());
     }
 }
