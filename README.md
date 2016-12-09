@@ -6,7 +6,7 @@
 可参考test下的entity.
 
 (1)生成事务原因,GameTransactionCauseImpl里面构造.
-(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造.
+(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造TimeMutexEntity.
 (3)提交锁实体跟事务,transactionService.commitTransaction里面提交.
 (4)后去事务提交结果,根据返回值做出判断.
 
@@ -39,6 +39,14 @@
 写锁例子如下
 (1)生成事务原因,GameTransactionCauseImpl里面构造.
 (2)生成锁实体,GameTransactionEntityFactoryImpl里面构造ForceEntity.
+(3提交锁实体跟事务,transactionService.commitTransaction里面提交.
+(4)后去事务提交结果,根据返回值做出判断.
+
+带时间写锁使用例子
+参考test下的testlock当锁存在的情况，延迟锁占用时间。
+写锁例子如下
+(1)生成事务原因,GameTransactionCauseImpl里面构造.
+(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造TestTimeMutexEntity.
 (3提交锁实体跟事务,transactionService.commitTransaction里面提交.
 (4)后去事务提交结果,根据返回值做出判断.
 
