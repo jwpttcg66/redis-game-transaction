@@ -10,6 +10,7 @@ public class GameTransactionEntityCauseImpl extends GameTransactionEntityCause{
     public static final GameTransactionEntityCause read = new GameTransactionEntityCauseImpl("read");
     public static final GameTransactionEntityCause attchment = new GameTransactionEntityCauseImpl("attchment");
     public static final GameTransactionEntityCause force = new GameTransactionEntityCauseImpl("force");
+    public static final GameTransactionEntityCause time = new GameTransactionEntityCauseImpl("time");
     public GameTransactionEntityCauseImpl(String gameTransactionEntityCause)
     {
         super(gameTransactionEntityCause);
