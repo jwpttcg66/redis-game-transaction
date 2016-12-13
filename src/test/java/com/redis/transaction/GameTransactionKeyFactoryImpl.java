@@ -2,7 +2,7 @@ package com.redis.transaction;
 
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.factory.GameTransactionKeyFactory;
-import com.redis.transaction.util.GlobalConstants;
+import com.redis.config.GlobalConstants;
 
 /**
  * Created by jiangwenping on 16/12/6.

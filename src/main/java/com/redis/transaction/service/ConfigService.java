@@ -1,8 +1,9 @@
 package com.redis.transaction.service;
 
-import com.redis.transaction.util.FileUtil;
-import com.redis.transaction.util.GlobalConstants;
-import com.redis.transaction.util.JdomUtils;
+import com.redis.util.FileUtil;
+import com.redis.config.GlobalConstants;
+import com.redis.util.JdomUtils;
+import com.redis.util.StringUtils;
 import org.jdom.DataConversionException;
 import org.jdom.Element;
 import redis.clients.jedis.JedisPool;
@@ -14,7 +15,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public class ConfigService {
 
     public JedisPoolConfig initRediPoolConfig() throws DataConversionException {
-        Element element = JdomUtils.getRootElemet(FileUtil.getConfigURL(GlobalConstants.ConfigFile.REDIS_POOL_CONIFG).getFile());
+        Element element = JdomUtils.getRootElemet(FileUtil.getConfigURL(GlobalConstants.RedisConfigFile.REDIS_POOL_CONIFG).getFile());
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         int maxIdle = element.getAttribute("maxIdle").getIntValue();
         boolean testWhileIdle = element.getAttribute("testWhileIdle").getBooleanValue();
@@ -30,7 +31,7 @@ public class ConfigService {
     }
 
     public JedisPool initRedis(JedisPoolConfig jedisPoolConfig) throws DataConversionException {
-        Element element = JdomUtils.getRootElemet(FileUtil.getConfigURL(GlobalConstants.ConfigFile.REDIS).getFile());
+        Element element = JdomUtils.getRootElemet(FileUtil.getConfigURL(GlobalConstants.RedisConfigFile.REDIS).getFile());
         String host = element.getAttribute("host").getValue();
         int port = element.getAttribute("port").getIntValue();
         boolean hasPassword = element.getAttribute("password") != null;
