@@ -9,10 +9,16 @@ import org.slf4j.LoggerFactory;
  * 日志相关
  */
 public class Loggers {
-    /** redis相关的日志 */
+    /**
+     * redis相关的日志
+     */
     public static final Logger redisLogger = LoggerFactory.getLogger("redis");
-    /** transaction相关的日志 */
+    /**
+     * transaction相关的日志
+     */
     public static final Logger transactionLogger = LoggerFactory.getLogger("transaction");
-    /** lock相关的日志 */
+    /**
+     * lock相关的日志
+     */
     public static final Logger lockLogger = LoggerFactory.getLogger("lock");
 }
