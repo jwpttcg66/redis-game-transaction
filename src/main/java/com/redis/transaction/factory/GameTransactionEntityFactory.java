@@ -11,6 +11,7 @@ public class GameTransactionEntityFactory {
 
     /**
      * 获取通用读锁实体 默认不能读取到
+     *
      * @return
      */
     public static CommonReadTransactionEnity createCommonReadRejectTransactionEnity(
@@ -23,10 +24,11 @@ public class GameTransactionEntityFactory {
 
     /**
      * 获取通用读锁实体 默认需要读取到
+     *
      * @return
      */
     public static CommonReadTransactionEnity createNormalCommonReadTransactionEnity(
-            GameTransactionEntityCause cause, RedisService redisService,String redisKey,
+            GameTransactionEntityCause cause, RedisService redisService, String redisKey,
             String unionKey) {
         String key = GameTransactionKeyFactory.getCommonTransactionEntityKey(
                 cause, redisKey, unionKey);

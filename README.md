@@ -1,55 +1,60 @@
-# redisgametransaction
-在大型游戏中经常使用分布式，分布式中因为游戏逻辑会经常游戏事务，借助redis某些特性我们可以实现分布式锁和分布式事务。很多redis集群不支持redis的事务特性。
+# Redis-分布式-事务
+> 在大型游戏中经常使用分布式，分布式中因为游戏逻辑会经常游戏事务，借助redis某些特性我们可以实现分布式锁和分布式事务。很多redis集群不支持redis的事务特性。
 这个框架用来解决分布式服务器下redis集群事务失效的情况下多线程分布式锁和分布式锁，让开发者可以有更多时间侧重游戏逻辑.
 
-互斥锁使用例子
+## 互斥锁使用例子
+
 可参考test下的entity.
 
-(1)生成事务原因,GameTransactionCauseImpl里面构造.
-(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造TimeMutexEntity.
-(3)提交锁实体跟事务,transactionService.commitTransaction里面提交.
-(4)后去事务提交结果,根据返回值做出判断.
+1. 生成事务原因,GameTransactionCauseImpl里面构造.
+2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造TimeMutexEntity.
+3. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
+4. 后去事务提交结果,根据返回值做出判断.
 
 
-读取锁使用例子
+## 读取锁使用例子
 可参考test下的read 可以设置默认是否成功读取到
 
-(1)生成读取事务原因GameTransactionCause里面已经构造好了.
-(2)生成读取锁实体GameTransactionEntityFactory里面已经构造好了.
-(3)提交读取锁实体跟事务transactionService.commitTransaction里面提交.
-(4)后去事务提交结果 根据返回值做出判断.
+1. 生成读取事务原因GameTransactionCause里面已经构造好了.
+2. 生成读取锁实体GameTransactionEntityFactory里面已经构造好了.
+3. 提交读取锁实体跟事务transactionService.commitTransaction里面提交.
+4. 后去事务提交结果 根据返回值做出判断.
 
-标记锁使用例子
+## 标记锁使用例子
+
 可参考test下的lockattchment可以设置默认是否成功读取到
-写锁例子如下
-(1)生成事务原因,GameTransactionCauseImpl里面构造.
-(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造.
-(3)生成锁标记内容 GameTransactionEntity对象获取GameTransactionLockInterface锁使用setContent
-(4)提交锁实体跟事务,transactionService.commitTransaction里面提交.
-(5)后去事务提交结果,根据返回值做出判断.
-读锁例子如下
-(1)生成读取事务原因GameTransactionCause里面构造.
-(2)生成读取锁实体GameTransactionEntityFactory里面构.
-(3)生成锁标记内容 GameTransactionEntity对象获取GameTransactionLockInterface锁使用setContent
-(4)提交读取锁实体跟事务transactionService.commitTransaction里面提交.
-(5)后去事务提交结果 根据返回值做出判断.
 
-强制写锁使用例子
+#### 写锁例子如下
+1. 生成事务原因,GameTransactionCauseImpl里面构造.
+2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造.
+3. 生成锁标记内容 GameTransactionEntity对象获取GameTransactionLockInterface锁使用setContent
+4. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
+5. 后去事务提交结果,根据返回值做出判断.
+
+#### 读锁例子如下
+1. 生成读取事务原因GameTransactionCause里面构造.
+2. 生成读取锁实体GameTransactionEntityFactory里面构.
+3. 生成锁标记内容 GameTransactionEntity对象获取GameTransactionLockInterface锁使用setContent
+4. 提交读取锁实体跟事务transactionService.commitTransaction里面提交.
+5. 后去事务提交结果 根据返回值做出判断.
+
+#### 强制写锁使用例子
 可参考test下的force 当锁存在的情况，延迟锁占用时间。
 写锁例子如下
-(1)生成事务原因,GameTransactionCauseImpl里面构造.
-(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造ForceEntity.
-(3提交锁实体跟事务,transactionService.commitTransaction里面提交.
-(4)后去事务提交结果,根据返回值做出判断.
+1. 生成事务原因,GameTransactionCauseImpl里面构造.
+2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造ForceEntity.
+3. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
+4. 后去事务提交结果,根据返回值做出判断.
 
-带时间写锁使用例子
+#### 带时间写锁使用例子
 参考test下的testlock当锁存在的情况，延迟锁占用时间。
 写锁例子如下
-(1)生成事务原因,GameTransactionCauseImpl里面构造.
-(2)生成锁实体,GameTransactionEntityFactoryImpl里面构造TestTimeMutexEntity.
-(3提交锁实体跟事务,transactionService.commitTransaction里面提交.
-(4)后去事务提交结果,根据返回值做出判断.
+1. 生成事务原因,GameTransactionCauseImpl里面构造.
+2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造TestTimeMutexEntity.
+3. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
+4. 后去事务提交结果,根据返回值做出判断.
 
 代码最后通过ant打包,发布代码存在dist下
-作者qq 330258845
-QQ群310158485
+
+- 作者qq 330258845
+- QQ群310158485

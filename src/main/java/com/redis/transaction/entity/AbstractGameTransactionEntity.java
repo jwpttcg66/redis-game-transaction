@@ -20,13 +20,19 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
 
     protected static Logger transactionLogger = Loggers.transactionLogger;
 
-    /** 进度设置集合 主要用于rollback*/
+    /**
+     * 进度设置集合 主要用于rollback
+     */
     private BitSet progressBitSet;
 
-    /** 事务锁*/
+    /**
+     * 事务锁
+     */
     private com.redis.transaction.lock.GameTransactionLockInterface gameTransactionLock;
 
-    /** 锁类型*/
+    /**
+     * 锁类型
+     */
     private GameTransactionLockType gameTransactionLockType;
 
     /**
@@ -35,23 +41,22 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
     private boolean rejectFlag = false;
 
 
-    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService){
+    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService) {
         this.progressBitSet = new BitSet();
         this.gameTransactionLock = new GameTransactionLock(key, redisService, cause);
         this.gameTransactionLockType = GameTransactionLockType.WRITE;
     }
 
-    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key,RedisService redisService, GameTransactionLockType gameTransactionLockType){
+    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService, GameTransactionLockType gameTransactionLockType) {
         this.progressBitSet = new BitSet();
-        if(gameTransactionLockType.equals(GameTransactionLockType.READ)){
+        if (gameTransactionLockType.equals(GameTransactionLockType.READ)) {
             this.gameTransactionLock = new GameTransactionReadLock(key, redisService, cause);
             this.gameTransactionLockType = GameTransactionLockType.READ;
-        }else{
+        } else {
             this.gameTransactionLock = new GameTransactionLock(key, redisService, cause);
             this.gameTransactionLockType = gameTransactionLockType;
         }
     }
-
 
 
     /**
@@ -59,17 +64,17 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
      * @param key
      * @param redisService
      * @param readLock
-     * @param lockTime 此参数只针对 非readlock锁
+     * @param lockTime     此参数只针对 非readlock锁
      */
-    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService, GameTransactionLockType gameTransactionLockType, long lockTime){
+    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService, GameTransactionLockType gameTransactionLockType, long lockTime) {
         this.progressBitSet = new BitSet();
-        if(gameTransactionLockType.equals(GameTransactionLockType.READ)){
+        if (gameTransactionLockType.equals(GameTransactionLockType.READ)) {
             this.gameTransactionLock = new GameTransactionReadLock(key, redisService, cause);
             this.gameTransactionLockType = GameTransactionLockType.READ;
-        }else if(gameTransactionLockType.equals(GameTransactionLockType.FORCE_WRITE_TIME)){
+        } else if (gameTransactionLockType.equals(GameTransactionLockType.FORCE_WRITE_TIME)) {
             this.gameTransactionLock = new GameTransactionLock(key, redisService, cause, lockTime, true);
             this.gameTransactionLockType = gameTransactionLockType;
-        }else{
+        } else {
             this.gameTransactionLock = new GameTransactionLock(key, redisService, cause, lockTime, false);
             this.gameTransactionLockType = gameTransactionLockType;
         }
@@ -77,10 +82,11 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
 
     /**
      * 设置提交事务的提交进度，用于回滚
+     *
      * @param step
      */
-    public void setCommitProgress(int step) throws GameTransactionException{
-        if(checkCommitProgress(step)){
+    public void setCommitProgress(int step) throws GameTransactionException {
+        if (checkCommitProgress(step)) {
             throw new GameTransactionException("progress has exsited");
         }
         progressBitSet.set(step);
@@ -88,25 +94,27 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
 
     /**
      * 检测当前进度是否设置过
+     *
      * @param step
      * @return
      */
-    public boolean checkCommitProgress(int step){
+    public boolean checkCommitProgress(int step) {
         return progressBitSet.get(step);
     }
 
     /**
      * 清除进度
+     *
      * @param step
      */
-    public void cleanCommitProgress(int step){
+    public void cleanCommitProgress(int step) {
         progressBitSet.set(step, false);
     }
 
     @Override
-    public boolean createGameTransactionLock(long seconds)  throws GameTransactionException{
+    public boolean createGameTransactionLock(long seconds) throws GameTransactionException {
         boolean result = gameTransactionLock.create(seconds);
-        if(rejectFlag){
+        if (rejectFlag) {
             result = !result;
         }
         return result;
@@ -115,8 +123,8 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
     @Override
     public void releaseGameTransactionLock() {
         //时间占有锁，不释放锁
-        if(gameTransactionLockType.equals(GameTransactionLockType.WRITE_TIME)
-                || gameTransactionLockType.equals(GameTransactionLockType.FORCE_WRITE_TIME)){
+        if (gameTransactionLockType.equals(GameTransactionLockType.WRITE_TIME)
+                || gameTransactionLockType.equals(GameTransactionLockType.FORCE_WRITE_TIME)) {
             return;
         }
         gameTransactionLock.destroy();
@@ -128,16 +136,16 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
     }
 
 
-
-    public String getInfo(){
+    public String getInfo() {
         return gameTransactionLockType + "类型" + gameTransactionLock.getInfo();
     }
 
     /**
      * 是否需要执行
+     *
      * @return
      */
-    public boolean needCommit(){
+    public boolean needCommit() {
         return !gameTransactionLockType.equals(GameTransactionLockType.READ);
 
     }
@@ -150,7 +158,7 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
         this.rejectFlag = rejectFlag;
     }
 
-    public GameTransactionLockInterface getGameTransactionLockInterface(){
+    public GameTransactionLockInterface getGameTransactionLockInterface() {
         return this.gameTransactionLock;
     }
 }

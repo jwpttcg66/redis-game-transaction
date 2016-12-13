@@ -1,7 +1,7 @@
 package com.redis.transaction.factory;
 
 import com.redis.transaction.enums.GameTransactionEntityCause;
-import com.redis.transaction.util.GlobalConstants;
+import com.redis.config.GlobalConstants;
 
 /**
  * Created by jiangwenping on 16/12/6.
