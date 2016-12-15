@@ -7,6 +7,7 @@ import com.redis.transaction.factory.GameTransactionEntityFactory;
 import com.redis.transaction.force.ForceEntity;
 import com.redis.transaction.service.RedisService;
 import com.redis.transaction.timelock.TestTimeMutexEntity;
+import com.redis.transaction.wait.WaitMutexEntity;
 
 /**
  * Created by jiangwenping on 16/12/6.
@@ -29,5 +30,11 @@ public class GameTransactionEntityFactoryImpl extends GameTransactionEntityFacto
         String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, redisKey, union);
         TestTimeMutexEntity testTimeMutexEntity = new TestTimeMutexEntity(cause, union, redisService);
         return testTimeMutexEntity;
+    }
+
+    public  static WaitMutexEntity createWaitMutexEntity(GameTransactionEntityCause cause,RedisService redisService, String redisKey, String union){
+        String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, redisKey, union);
+        WaitMutexEntity waitTimeMutexEntity = new WaitMutexEntity(cause, union, redisService);
+        return waitTimeMutexEntity;
     }
 }

@@ -13,6 +13,7 @@ public class TimeUtil {
     public static long SIX_HOUR = 6 * ONE_HOUR;
     public static long ONE_DAY = 24 * ONE_HOUR;
 
+    public static int SECOND_SECOND = 1;
     public static int MINUTE_SECOND = (int) (MINUTE / SECOND);
     public static int SIX_HOUR_SECOND = (int) (SIX_HOUR / SECOND);
 

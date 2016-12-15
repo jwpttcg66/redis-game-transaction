@@ -14,4 +14,9 @@ public interface TransactionService {
      * @return
      */
     public GameTransactionCommitResult commitTransaction(GameTransactionCause gameTransactionCause, AbstractGameTransactionEntity... abstractGameTransactionEntity);
+    /**
+     * 提交事务
+     * @return
+     */
+    public GameTransactionCommitResult commitTransaction(GameTransactionCause gameTransactionCause, long waitTime, AbstractGameTransactionEntity... abstractGameTransactionEntity);
 }

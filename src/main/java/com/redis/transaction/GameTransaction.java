@@ -11,8 +11,15 @@ import com.redis.util.TimeUtil;
  */
 public class GameTransaction extends AbstractGameTransaction {
 
+    private long waitTime;
+
     public GameTransaction(GameTransactionCause cause){
         super(cause);
+    }
+
+    public GameTransaction(GameTransactionCause cause, long waitTime){
+        super(cause);
+        this.waitTime = waitTime;
     }
 
 
@@ -70,18 +77,47 @@ public class GameTransaction extends AbstractGameTransaction {
         if(state != ACTIVE)
             throw new GameTransactionException();
         boolean creatflag = true;
-        long seconds = TimeUtil.getSeconds();
-        for(GameTransactionEntityInterface entity:entities){
+        long startSecond = TimeUtil.getSeconds();
+        if(waitTime > 0){
+            for(;;){
+                long currSeconds = TimeUtil.getSeconds();
+                creatflag = createOnceGameTransactionLock(currSeconds);
+                if(creatflag = true){
+                    break;
+                }
+
+                try {
+                    Thread.sleep(TimeUtil.SECOND);
+                }catch (Throwable e){
+
+                }
+
+                currSeconds = TimeUtil.getSeconds();
+                if(startSecond + waitTime < currSeconds){
+                    creatflag = false;
+                    break;
+                }
+            }
+        }else {
+            long seconds = TimeUtil.getSeconds();
+            creatflag = createOnceGameTransactionLock(startSecond);
+        }
+        return creatflag;
+    }
+
+    public boolean createOnceGameTransactionLock(long seconds)throws GameTransactionException{
+        boolean creatFlag = false;
+        for (GameTransactionEntityInterface entity : entities) {
             try {
-                creatflag = entity.createGameTransactionLock(seconds);
+                creatFlag = entity.createGameTransactionLock(seconds);
             } catch (Exception e) {
                 throw new GameTransactionException(e.getMessage());
             }
-            if(!creatflag){
+            if (!creatFlag) {
                 break;
             }
         }
-        return creatflag;
+        return creatFlag;
     }
 
 
