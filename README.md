@@ -39,7 +39,8 @@
 5. 后去事务提交结果 根据返回值做出判断.
 
 #### 强制写锁使用例子
-可参考test下的force 当锁存在的情况，延迟锁占用时间。
+可参考test下的force
+当锁存在的情况，延迟锁占用时间。
 写锁例子如下
 1. 生成事务原因,GameTransactionCauseImpl里面构造.
 2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造ForceEntity.
@@ -47,14 +48,24 @@
 4. 后去事务提交结果,根据返回值做出判断.
 
 #### 带时间写锁使用例子
-参考test下的testlock当锁存在的情况，延迟锁占用时间。
+参考test下的testlock
+当锁存在的情况，延迟锁占用时间。
 写锁例子如下
 1. 生成事务原因,GameTransactionCauseImpl里面构造.
 2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造TestTimeMutexEntity.
 3. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
 4. 后去事务提交结果,根据返回值做出判断.
 
-代码最后通过ant打包,发布代码存在dist下
+#### 带时间等待写锁使用例子
+参考test下的wait
+当锁失败的情况下，会尝试每秒检查锁，直到设置的等待时间结束
+写锁例子如下
+1. 生成事务原因,GameTransactionCauseImpl里面构造.
+2. 生成锁实体,GameTransactionEntityFactoryImpl里面构造WaitMutexEntity.
+3. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
+4. 后去事务提交结果,根据返回值做出判断.
+
+代码最后通过maven部署
 
 - 作者qq 330258845
 - QQ群310158485
