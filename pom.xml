@@ -11,9 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <log4j-core.version>2.3</log4j-core.version>
-        <log4j-slf4j-impl.version>2.3</log4j-slf4j-impl.version>
-        <slf4j-api.version>1.7.12</slf4j-api.version>
+        <slf4j-log4j12.version>1.7.12</slf4j-log4j12.version>
         <junit.version>4.4</junit.version>
         <app.encoding>UTF-8</app.encoding>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
@@ -34,19 +32,10 @@
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j12.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j-slf4j-impl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j-core.version}</version>
-        </dependency>
+        <!-- Logging -->
 
         <dependency>
             <groupId>org.jdom</groupId>
@@ -72,7 +61,7 @@
             <version>2.6</version>
         </dependency>
 
-         <!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
+        <!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
 
 
         <!--version=1.4-->
@@ -80,7 +69,6 @@
         <!--artifactId=commons-codec-->
 
     </dependencies>
-
 
 
     <build>
