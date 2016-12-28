@@ -5,6 +5,7 @@ import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.enums.GameTransactionLockType;
 import com.redis.transaction.factory.GameTransactionEntityFactory;
 import com.redis.transaction.force.ForceEntity;
+import com.redis.transaction.rollback.RollbackMutexEntity;
 import com.redis.transaction.service.RedisService;
 import com.redis.transaction.timelock.TestTimeMutexEntity;
 import com.redis.transaction.wait.WaitMutexEntity;
@@ -36,5 +37,11 @@ public class GameTransactionEntityFactoryImpl extends GameTransactionEntityFacto
         String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, redisKey, union);
         WaitMutexEntity waitTimeMutexEntity = new WaitMutexEntity(cause, union, redisService);
         return waitTimeMutexEntity;
+    }
+
+    public  static RollbackMutexEntity createRollbackMutexEntityy(GameTransactionEntityCause cause,RedisService redisService, String redisKey, String union){
+        String key = GameTransactionKeyFactoryImpl.getPlayerTransactionEntityKey(cause, redisKey, union);
+        RollbackMutexEntity rollbackMutexEntity = new RollbackMutexEntity(cause, union, redisService);
+        return rollbackMutexEntity;
     }
 }

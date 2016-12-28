@@ -12,6 +12,7 @@ public class GameTransactionCauseImpl extends GameTransactionCause{
     public static GameTransactionCauseImpl force = new GameTransactionCauseImpl("forceTransAction");
     public static GameTransactionCauseImpl time = new GameTransactionCauseImpl("time");
     public static GameTransactionCauseImpl wait = new GameTransactionCauseImpl("wait");
+    public static GameTransactionCauseImpl rollback = new GameTransactionCauseImpl("rollback");
     public GameTransactionCauseImpl(String cause) {
         super(cause);
     }
