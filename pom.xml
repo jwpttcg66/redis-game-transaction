@@ -6,17 +6,18 @@
 
     <groupId>com.redis</groupId>
     <artifactId>redis-game-transaction</artifactId>
-    <version>1.6.006</version>
+    <version>1.7.001</version>
 
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j-log4j12.version>1.7.12</slf4j-log4j12.version>
-        <junit.version>4.4</junit.version>
+        <junit.version>4.12</junit.version>
         <app.encoding>UTF-8</app.encoding>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <version.template.file>version.txt.template</version.template.file>
         <version.file>version.txt</version.file>
+        <spring.version>4.3.2.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -61,12 +62,30 @@
             <version>2.6</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
-
-
-        <!--version=1.4-->
-        <!--groupId=commons-codec-->
-        <!--artifactId=commons-codec-->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
