@@ -78,7 +78,10 @@
 3. 提交锁实体跟事务,transactionService.commitTransaction里面提交.
 4. 后去事务提交结果,根据返回值做出判断.
 
-代码最后通过maven部署,已经集成spring。
+已经集成spring和redis集群
+> 参考test下的spring
+
+代码最后通过maven部署,
 
 此框架已经上线手游项目两年，经过百万级DAU验证,稳定运行.
 
