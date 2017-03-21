@@ -7,6 +7,7 @@ import com.redis.transaction.exception.GameTransactionException;
 import com.redis.transaction.lock.GameTransactionLock;
 import com.redis.transaction.lock.GameTransactionLockInterface;
 import com.redis.transaction.lock.GameTransactionReadLock;
+import com.redis.transaction.service.IRedisService;
 import com.redis.transaction.service.RedisService;
 import org.slf4j.Logger;
 
@@ -41,13 +42,13 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
     private boolean rejectFlag = false;
 
 
-    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService) {
+    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, IRedisService redisService) {
         this.progressBitSet = new BitSet();
         this.gameTransactionLock = new GameTransactionLock(key, redisService, cause);
         this.gameTransactionLockType = GameTransactionLockType.WRITE;
     }
 
-    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService, GameTransactionLockType gameTransactionLockType) {
+    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, IRedisService redisService, GameTransactionLockType gameTransactionLockType) {
         this.progressBitSet = new BitSet();
         if (gameTransactionLockType.equals(GameTransactionLockType.READ)) {
             this.gameTransactionLock = new GameTransactionReadLock(key, redisService, cause);
@@ -66,7 +67,7 @@ public abstract class AbstractGameTransactionEntity implements GameTransactionEn
      * @param readLock
      * @param lockTime     此参数只针对 非readlock锁
      */
-    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, RedisService redisService, GameTransactionLockType gameTransactionLockType, long lockTime) {
+    public AbstractGameTransactionEntity(GameTransactionEntityCause cause, String key, IRedisService redisService, GameTransactionLockType gameTransactionLockType, long lockTime) {
         this.progressBitSet = new BitSet();
         if (gameTransactionLockType.equals(GameTransactionLockType.READ)) {
             this.gameTransactionLock = new GameTransactionReadLock(key, redisService, cause);

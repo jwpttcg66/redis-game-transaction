@@ -5,7 +5,7 @@ import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.enums.GameTransactionLockType;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.RedisService;
+import com.redis.transaction.service.IRedisService;
 import com.redis.util.TimeUtil;
 
 /**
@@ -13,8 +13,8 @@ import com.redis.util.TimeUtil;
  */
 public class TestTimeMutexEntity extends AbstractGameTransactionEntity {
 
-    private RedisService redisService;
-    public TestTimeMutexEntity(GameTransactionEntityCause cause, String key, RedisService redisService) {
+    private IRedisService redisService;
+    public TestTimeMutexEntity(GameTransactionEntityCause cause, String key, IRedisService redisService) {
         super(cause, key, redisService, GameTransactionLockType.WRITE_TIME, TimeUtil.FIVE_MINUTE);
         this.redisService = redisService;
 

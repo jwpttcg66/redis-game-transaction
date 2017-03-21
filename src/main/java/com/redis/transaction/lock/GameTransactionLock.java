@@ -4,7 +4,7 @@ import com.redis.log.Loggers;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.enums.GameTransactionLockStateEnum;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.RedisService;
+import com.redis.transaction.service.IRedisService;
 import com.redis.util.StringUtils;
 import com.redis.util.TimeUtil;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
 
     protected static Logger logger = Loggers.lockLogger;
 
-    public GameTransactionLock(String lockKey, RedisService redisService, GameTransactionEntityCause gameTransactionEntityCause) {
+    public GameTransactionLock(String lockKey, IRedisService redisService, GameTransactionEntityCause gameTransactionEntityCause) {
         super();
         this.lockKey = lockKey;
         this.redisService = redisService;
@@ -26,7 +26,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
         this.lockTime = TimeUtil.MINUTE_SECOND;
     }
 
-    public GameTransactionLock(String lockKey, RedisService redisService, GameTransactionEntityCause gameTransactionEntityCause,long lockTime, boolean forceFlag) {
+    public GameTransactionLock(String lockKey, IRedisService redisService, GameTransactionEntityCause gameTransactionEntityCause,long lockTime, boolean forceFlag) {
         super();
         this.lockKey = lockKey;
         this.redisService = redisService;
@@ -36,7 +36,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
         this.forceFlag = forceFlag;
     }
 
-    public GameTransactionLock(String lockKey, RedisService redisService, GameTransactionEntityCause gameTransactionEntityCause,long lockTime, boolean forceFlag, String lockContent) {
+    public GameTransactionLock(String lockKey, IRedisService redisService, GameTransactionEntityCause gameTransactionEntityCause,long lockTime, boolean forceFlag, String lockContent) {
         super();
         this.lockKey = lockKey;
         this.redisService = redisService;
@@ -52,7 +52,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
     private String lockKey;
 
     /** redis*/
-    private RedisService redisService;
+    private IRedisService redisService;
 
     private GameTransactionEntityCause gameTransactionEntityCause;
 

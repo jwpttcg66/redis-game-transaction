@@ -4,7 +4,7 @@ import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.enums.GameTransactionLockType;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.RedisService;
+import com.redis.transaction.service.IRedisService;
 
 /**
  * Created by jiangwenping on 16/12/7.
@@ -13,7 +13,7 @@ import com.redis.transaction.service.RedisService;
 public class CommonReadTransactionEnity extends AbstractGameTransactionEntity {
 
     public CommonReadTransactionEnity(GameTransactionEntityCause cause, String key,
-                                      RedisService redisService) {
+                                      IRedisService redisService) {
         super(cause, key, redisService, GameTransactionLockType.READ);
     }
 

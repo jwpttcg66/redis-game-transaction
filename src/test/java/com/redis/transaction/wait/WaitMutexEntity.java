@@ -4,15 +4,15 @@ import com.redis.transaction.entity.AbstractGameTransactionEntity;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.RedisService;
+import com.redis.transaction.service.IRedisService;
 
 /**
  * Created by jiangwenping on 16/12/15.
  */
 public class WaitMutexEntity extends AbstractGameTransactionEntity {
 
-    private RedisService redisService;
-    public WaitMutexEntity(GameTransactionEntityCause cause, String key, RedisService redisService) {
+    private IRedisService redisService;
+    public WaitMutexEntity(GameTransactionEntityCause cause, String key, IRedisService redisService) {
         super(cause, key, redisService);
         this.redisService = redisService;
 
