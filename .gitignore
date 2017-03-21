@@ -16,4 +16,5 @@ redis-game-transaction.iml
 # Exclude maven wrapper
 !/.mvn/wrapper/maven-wrapper.jar
 out
+logs
 
