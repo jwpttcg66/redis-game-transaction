@@ -9,7 +9,7 @@ import redis.clients.jedis.JedisPool;
  * Created by jiangwenping on 16/11/26.
  * 提供redis读取服务
  */
-public class RedisService{
+public class RedisService implements IRedisService{
 
     protected static Logger logger = Loggers.redisLogger;
     /*
@@ -80,6 +80,7 @@ public class RedisService{
      * @param key
      * @param seconds
      */
+    @Override
     public void expire(String key,int seconds){
         Jedis jedis = null;
         boolean sucess = true;
@@ -100,6 +101,7 @@ public class RedisService{
      * 删除key
      * @param key
      */
+    @Override
     public boolean deleteKey(String key){
         Jedis jedis = null;
         boolean success = true;
@@ -122,6 +124,7 @@ public class RedisService{
      * @param value
      * @return
      */
+    @Override
     public boolean setNxString(String key, String value, int seconds) throws Exception{
         Jedis jedis = null;
         boolean success = true;
@@ -150,6 +153,7 @@ public class RedisService{
      * @param value
      * @return
      */
+    @Override
     public boolean setHnxString(String key, String field, String value) throws Exception{
         Jedis jedis = null;
         boolean success = true;
@@ -169,10 +173,12 @@ public class RedisService{
 
     }
 
+    @Override
     public void setString(String key,String object){
         setString(key, object, -1);
     }
 
+    @Override
     public void setString(String key, String value, int seconds) {
         Jedis jedis = null;
         boolean sucess = true;
@@ -193,10 +199,12 @@ public class RedisService{
         }
     }
 
+    @Override
     public String getString(String key){
         return getString(key, -1);
     }
 
+    @Override
     public String getString(String key, int seconds){
         Jedis jedis = null;
         boolean sucess = true;
@@ -218,6 +226,7 @@ public class RedisService{
         return rt;
     }
 
+    @Override
     public boolean exists(String key){
         Jedis jedis = null;
         boolean sucess = true;
