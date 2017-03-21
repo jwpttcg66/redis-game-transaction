@@ -177,8 +177,8 @@ public class RedisService implements IRedisService{
     }
 
     @Override
-    public void setString(String key,String object){
-        setString(key, object, -1);
+    public void setString(String key,String value){
+        setString(key, value, -1);
     }
 
     @Override
