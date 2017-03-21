@@ -1,9 +1,12 @@
 package com.redis.transaction.service;
 
 import com.redis.log.Loggers;
+import com.redis.util.TimeUtil;
 import org.slf4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+
+import java.util.Date;
 
 /**
  * Created by jiangwenping on 16/11/26.
@@ -37,7 +40,7 @@ public class RedisService implements IRedisService{
      * 释放错误链接
      */
     private void returnBrokenResource(Jedis jedis,String name,Exception exception){
-//        logger.error(TimeUtils.dateToString(new Date())+":::::"+name+":::::"+msge.getMessage(), msge);
+        logger.error(TimeUtil.getDateString(new Date())+":::::"+name);
         if (jedis != null) {
             try {
                 jedisPool.returnBrokenResource(jedis);

@@ -1,12 +1,19 @@
 package com.redis.transaction.service;
 
+import com.redis.log.Loggers;
 import com.redis.transaction.service.cluster.JedisClusterFactory;
+import com.redis.util.TimeUtil;
+import org.slf4j.Logger;
+
+import java.util.Date;
 
 /**
  * Created by jiangwenping on 17/3/21.
  * redis集群服务
  */
 public class RedisClusterService implements IRedisService{
+
+    protected static Logger logger = Loggers.redisLogger;
 
     private JedisClusterFactory jedisClusterFactory;
 
@@ -15,7 +22,7 @@ public class RedisClusterService implements IRedisService{
         try {
             jedisClusterFactory.getObject().expire(key, seconds);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "expire" + key, e);
         }
     }
 

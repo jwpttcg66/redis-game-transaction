@@ -1,5 +1,9 @@
 package com.redis.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by jiangwenping on 16/11/26.
  * 时间提供服务
@@ -20,5 +24,13 @@ public class TimeUtil {
     public static long getSeconds(){
         long now = System.currentTimeMillis();
         return now / SECOND;
+    }
+
+    public static String getDateString(Date d){
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.fff");
+        return format.format(c.getTime());
+
     }
 }
