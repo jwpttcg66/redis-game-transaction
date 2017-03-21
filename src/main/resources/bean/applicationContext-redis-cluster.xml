@@ -21,17 +21,17 @@ http://www.springframework.org/schema/cache/spring-cache.xsd"
         <property name="genericObjectPoolConfig" ref="genericObjectPoolConfig" />
         <property name="jedisClusterNodes">
             <set>
-                <value>127.0.0.1:7001</value>
-                <value>127.0.0.1:7002</value>
-                <value>127.0.0.1:7003</value>
-                <value>127.0.0.1:7004</value>
-                <value>127.0.0.1:7005</value>
-                <value>127.0.0.1:7006</value>
+                <value>192.168.0.240:7000</value>
+                <value>192.168.0.240:7001</value>
+                <value>192.168.0.240:7002</value>
+                <value>192.168.0.240:7003</value>
+                <value>192.168.0.240:7004</value>
+                <value>192.168.0.240:7005</value>
             </set>
         </property>
     </bean>
 
-    <!--<bean id="redisClusterService" class="com.redis.transaction.service.RedisClusterService">-->
-        <!--<property name="jedisClusterFactory" ref="jedisCluster" />-->
-    <!--</bean>-->
+    <bean id="redisClusterService" class="com.redis.transaction.service.RedisClusterService">
+        <property name="jedisCluster" ref="jedisCluster" />
+    </bean>
 </beans>

@@ -1,9 +1,9 @@
 package com.redis.transaction.service;
 
 import com.redis.log.Loggers;
-import com.redis.transaction.service.cluster.JedisClusterFactory;
 import com.redis.util.TimeUtil;
 import org.slf4j.Logger;
+import redis.clients.jedis.JedisCluster;
 
 import java.util.Date;
 
@@ -15,12 +15,12 @@ public class RedisClusterService implements IRedisService {
 
     protected static Logger logger = Loggers.redisLogger;
 
-    private JedisClusterFactory jedisClusterFactory;
+    private JedisCluster jedisCluster;
 
     @Override
     public void expire(String key, int seconds) {
         try {
-            jedisClusterFactory.getObject().expire(key, seconds);
+            jedisCluster.expire(key, seconds);
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "expire" + key, e);
         }
@@ -30,7 +30,7 @@ public class RedisClusterService implements IRedisService {
     public boolean deleteKey(String key) {
         boolean flag = false;
         try {
-            jedisClusterFactory.getObject().del(key);
+            jedisCluster.del(key);
             flag = true;
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "deleteKey" + key, e);
@@ -42,9 +42,9 @@ public class RedisClusterService implements IRedisService {
     public boolean setNxString(String key, String value, int seconds) throws Exception {
         boolean flag = false;
         try {
-            flag = (jedisClusterFactory.getObject().setnx(key, value) != 0);
+            flag = (jedisCluster.setnx(key, value) != 0);
             if (seconds > -1) {
-                jedisClusterFactory.getObject().expire(key, seconds);
+                jedisCluster.expire(key, seconds);
             }
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "setNxString" + key, e);
@@ -56,7 +56,7 @@ public class RedisClusterService implements IRedisService {
     public boolean setHnxString(String key, String field, String value) throws Exception {
         boolean flag = false;
         try {
-            flag = (jedisClusterFactory.getObject().hsetnx(key, field, value) != 0);
+            flag = (jedisCluster.hsetnx(key, field, value) != 0);
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "setNxString" + key, e);
         }
@@ -66,7 +66,7 @@ public class RedisClusterService implements IRedisService {
     @Override
     public void setString(String key, String value) {
         try {
-            jedisClusterFactory.getObject().set(key, value);
+            jedisCluster.set(key, value);
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "setString" + key, e);
         }
@@ -75,9 +75,9 @@ public class RedisClusterService implements IRedisService {
     @Override
     public void setString(String key, String value, int seconds) {
         try {
-            jedisClusterFactory.getObject().set(key, value);
+            jedisCluster.set(key, value);
             if (seconds > -1) {
-                jedisClusterFactory.getObject().expire(key, seconds);
+                jedisCluster.expire(key, seconds);
             }
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "setString" + key, e);
@@ -88,7 +88,7 @@ public class RedisClusterService implements IRedisService {
     public String getString(String key) {
         String flag = null;
         try {
-            flag = jedisClusterFactory.getObject().get(key);
+            flag = jedisCluster.get(key);
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "getString" + key, e);
         }
@@ -99,9 +99,9 @@ public class RedisClusterService implements IRedisService {
     public String getString(String key, int seconds) {
         String flag = null;
         try {
-            flag = jedisClusterFactory.getObject().get(key);
+            flag = jedisCluster.get(key);
             if (seconds > -1) {
-                jedisClusterFactory.getObject().expire(key, seconds);
+                jedisCluster.expire(key, seconds);
             }
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "getString" + key, e);
@@ -113,18 +113,19 @@ public class RedisClusterService implements IRedisService {
     public boolean exists(String key) {
         boolean flag = false;
         try {
-            flag = jedisClusterFactory.getObject().exists(key);
+            flag = jedisCluster.exists(key);
         } catch (Exception e) {
             logger.error(TimeUtil.getDateString(new Date()) + ":::::" + "exists" + key, e);
         }
         return flag;
     }
 
-    public JedisClusterFactory getJedisClusterFactory() {
-        return jedisClusterFactory;
+
+    public JedisCluster getJedisCluster() {
+        return jedisCluster;
     }
 
-    public void setJedisClusterFactory(JedisClusterFactory jedisClusterFactory) {
-        this.jedisClusterFactory = jedisClusterFactory;
+    public void setJedisCluster(JedisCluster jedisCluster) {
+        this.jedisCluster = jedisCluster;
     }
 }
