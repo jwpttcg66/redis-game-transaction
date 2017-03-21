@@ -86,7 +86,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
         if(deleteFlag){
             boolean flag = redisService.deleteKey(getLockKey(lockKey, gameTransactionEntityCause));
             if(!flag){
-                logger.info("GameTransactionLock" + lockKey + ":gameTransactionEntityCause" + gameTransactionEntityCause.toString() +  "destroy is error");
+                logger.info("GameTransactionLock" + lockKey + ":gameTransactionEntityCause" + gameTransactionEntityCause.getCause() +  "destroy is error");
             }
         }
     }
@@ -128,7 +128,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
      * @return
      */
     public String getInfo(){
-        return lockKey + StringUtils.DEFAULT_SPLIT + gameTransactionEntityCause.toString() + StringUtils.DEFAULT_SPLIT + this.lockState;
+        return lockKey + StringUtils.DEFAULT_SPLIT + gameTransactionEntityCause.getCause() + StringUtils.DEFAULT_SPLIT + this.lockState;
     }
 
     /**
@@ -138,7 +138,7 @@ public class GameTransactionLock implements GameTransactionLockInterface {
      * @return
      */
     public String getLockKey(String lockKey, GameTransactionEntityCause GameTransactionEntityCause){
-        return lockKey + "#" + gameTransactionEntityCause.toString();
+        return lockKey + "#" + gameTransactionEntityCause.getCause();
     }
 
     /**

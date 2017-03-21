@@ -60,7 +60,7 @@ public class GameTransactionReadLock implements GameTransactionLockInterface {
 
     @Override
     public String getInfo() {
-        return lockKey + StringUtils.DEFAULT_SPLIT + gameTransactionEntityCause.toString()+ StringUtils.DEFAULT_SPLIT + this.lockState;
+        return lockKey + StringUtils.DEFAULT_SPLIT + gameTransactionEntityCause.getCause()+ StringUtils.DEFAULT_SPLIT + this.lockState;
     }
 
 
@@ -71,7 +71,7 @@ public class GameTransactionReadLock implements GameTransactionLockInterface {
      * @return
      */
     public String getLockKey(String lockKey, GameTransactionEntityCause GameTransactionEntityCause){
-        return lockKey + "#" + gameTransactionEntityCause.toString();
+        return lockKey + "#" + gameTransactionEntityCause.getCause();
     }
 
     @Override
