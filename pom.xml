@@ -6,7 +6,7 @@
 
     <groupId>com.redis</groupId>
     <artifactId>redis-game-transaction</artifactId>
-    <version>1.8.008</version>
+    <version>1.8.009</version>
 
 
     <properties>

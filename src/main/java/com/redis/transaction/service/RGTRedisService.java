@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by jiangwenping on 16/11/26.
  * 提供redis读取服务
  */
-public class RGTRedisService implements IRedisService{
+public class RGTRedisService implements IRGTRedisService {
 
     protected static Logger logger = Loggers.redisLogger;
     /*

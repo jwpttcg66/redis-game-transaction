@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by jiangwenping on 17/3/21.
  * redis集群服务
  */
-public class RGTRedisClusterService implements IRedisService {
+public class RGTRedisClusterService implements IRGTRedisService {
 
     protected static Logger logger = Loggers.redisLogger;
 

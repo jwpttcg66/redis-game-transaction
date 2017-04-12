@@ -3,7 +3,7 @@ package com.redis.transaction.entity;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.IRedisService;
+import com.redis.transaction.service.IRGTRedisService;
 
 /**
  * Created by jiangwenping on 16/12/6.
@@ -11,8 +11,8 @@ import com.redis.transaction.service.IRedisService;
  */
 public class TestMutexEntity extends AbstractGameTransactionEntity{
 
-    private IRedisService redisService;
-    public TestMutexEntity(GameTransactionEntityCause cause, String key, IRedisService redisService) {
+    private IRGTRedisService redisService;
+    public TestMutexEntity(GameTransactionEntityCause cause, String key, IRGTRedisService redisService) {
         super(cause, key, redisService);
         this.redisService = redisService;
 

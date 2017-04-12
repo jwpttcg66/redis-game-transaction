@@ -4,7 +4,7 @@ import com.redis.log.Loggers;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.enums.GameTransactionLockStateEnum;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.IRedisService;
+import com.redis.transaction.service.IRGTRedisService;
 import com.redis.util.StringUtils;
 import org.slf4j.Logger;
 
@@ -20,7 +20,7 @@ public class GameTransactionReadLock implements GameTransactionLockInterface {
     private String lockKey;
 
     /** redis*/
-    private IRedisService redisService;
+    private IRGTRedisService redisService;
 
     /**事务原因*/
     private GameTransactionEntityCause gameTransactionEntityCause;
@@ -33,7 +33,7 @@ public class GameTransactionReadLock implements GameTransactionLockInterface {
      */
     private String lockContent="";
 
-    public GameTransactionReadLock(String lockKey, IRedisService redisService, GameTransactionEntityCause gameTransactionEntityCause) {
+    public GameTransactionReadLock(String lockKey, IRGTRedisService redisService, GameTransactionEntityCause gameTransactionEntityCause) {
         super();
         this.lockKey = lockKey;
         this.redisService = redisService;

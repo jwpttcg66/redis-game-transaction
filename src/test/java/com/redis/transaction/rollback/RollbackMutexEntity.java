@@ -4,16 +4,16 @@ import com.redis.transaction.entity.AbstractGameTransactionEntity;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.enums.GameTransactionEntityCause;
 import com.redis.transaction.exception.GameTransactionException;
-import com.redis.transaction.service.IRedisService;
+import com.redis.transaction.service.IRGTRedisService;
 
 /**
  * Created by jiangwenping on 16/12/28.
  */
 public class RollbackMutexEntity  extends AbstractGameTransactionEntity {
 
-    private IRedisService redisService;
+    private IRGTRedisService redisService;
 
-    public RollbackMutexEntity(GameTransactionEntityCause cause, String key, IRedisService redisService) {
+    public RollbackMutexEntity(GameTransactionEntityCause cause, String key, IRGTRedisService redisService) {
         super(cause, key, redisService);
         this.redisService = redisService;
 
