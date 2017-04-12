@@ -5,8 +5,8 @@ import com.redis.transaction.GameTransactionEntityCauseImpl;
 import com.redis.transaction.GameTransactionEntityFactoryImpl;
 import com.redis.transaction.RedisKey;
 import com.redis.transaction.enums.GameTransactionCommitResult;
-import com.redis.transaction.service.ConfigService;
-import com.redis.transaction.service.RedisService;
+import com.redis.transaction.service.RGTConfigService;
+import com.redis.transaction.service.RGTRedisService;
 import com.redis.transaction.service.TransactionService;
 import com.redis.transaction.service.TransactionServiceImpl;
 
@@ -15,13 +15,13 @@ import com.redis.transaction.service.TransactionServiceImpl;
  */
 public class RollBackMutexTransaction {
     public static void main(String[] args) throws Exception{
-        ConfigService configService = new ConfigService();
-        RedisService redisService = new RedisService();
-        redisService.setJedisPool(configService.initRedis(configService.initRediPoolConfig()));
+        RGTConfigService RGTConfigService = new RGTConfigService();
+        RGTRedisService RGTRedisService = new RGTRedisService();
+        RGTRedisService.setJedisPool(RGTConfigService.initRedis(RGTConfigService.initRediPoolConfig()));
 
         TransactionService transactionService = new TransactionServiceImpl();
         String union = "union";
-        RollbackMutexEntity rollbackMutexEntity = GameTransactionEntityFactoryImpl.createRollbackMutexEntityy(GameTransactionEntityCauseImpl.rollback, redisService, RedisKey.player, union);
+        RollbackMutexEntity rollbackMutexEntity = GameTransactionEntityFactoryImpl.createRollbackMutexEntityy(GameTransactionEntityCauseImpl.rollback, RGTRedisService, RedisKey.player, union);
         GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.rollback, rollbackMutexEntity);
         System.out.println(commitResult.getReuslt());
     }

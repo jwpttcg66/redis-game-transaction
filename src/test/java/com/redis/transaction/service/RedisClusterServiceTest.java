@@ -9,7 +9,7 @@ import redis.clients.jedis.JedisCluster;
 public class RedisClusterServiceTest {
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext(new String[]{"bean/*.xml"});
-//        RedisClusterService redisClusterService = (RedisClusterService) classPathXmlApplicationContext.getBean("redisClusterService");
+//        RGTRedisClusterService redisClusterService = (RGTRedisClusterService) classPathXmlApplicationContext.getBean("redisClusterService");
 //
 //        redisClusterService.setString("test", "200");
 //        System.out.println(redisClusterService.getString("test"));

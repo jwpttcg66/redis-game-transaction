@@ -29,7 +29,7 @@ public class TimeUtil {
     public static String getDateString(Date d){
         Calendar c = Calendar.getInstance();
         c.setTime(d);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.fff");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return format.format(c.getTime());
 
     }

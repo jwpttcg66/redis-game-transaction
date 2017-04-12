@@ -31,7 +31,7 @@ http://www.springframework.org/schema/cache/spring-cache.xsd"
         </property>
     </bean>
 
-    <bean id="redisClusterService" class="com.redis.transaction.service.RedisClusterService">
+    <bean id="RGTRedisClusterService" class="com.redis.transaction.service.RGTRedisClusterService">
         <property name="jedisCluster" ref="jedisCluster" />
     </bean>
 </beans>

@@ -7,8 +7,8 @@ import com.redis.transaction.RedisKey;
 import com.redis.transaction.entity.CommonReadTransactionEnity;
 import com.redis.transaction.entity.TestMutexEntity;
 import com.redis.transaction.enums.GameTransactionCommitResult;
-import com.redis.transaction.service.ConfigService;
-import com.redis.transaction.service.RedisService;
+import com.redis.transaction.service.RGTConfigService;
+import com.redis.transaction.service.RGTRedisService;
 import com.redis.transaction.service.TransactionService;
 import com.redis.transaction.service.TransactionServiceImpl;
 
@@ -18,20 +18,20 @@ import com.redis.transaction.service.TransactionServiceImpl;
 public class AttachmentTest {
 
     public static void main(String[] args) throws Exception {
-        ConfigService configService = new ConfigService();
-        RedisService redisService = new RedisService();
-        redisService.setJedisPool(configService.initRedis(configService.initRediPoolConfig()));
+        RGTConfigService RGTConfigService = new RGTConfigService();
+        RGTRedisService RGTRedisService = new RGTRedisService();
+        RGTRedisService.setJedisPool(RGTConfigService.initRedis(RGTConfigService.initRediPoolConfig()));
 
         TransactionService transactionService = new TransactionServiceImpl();
 
         String union = "union";
         String attchMent = "attchement";
-        TestMutexEntity testMutexEntity = GameTransactionEntityFactoryImpl.createTestMutexEntity(GameTransactionEntityCauseImpl.attchment, redisService, RedisKey.player, union);
+        TestMutexEntity testMutexEntity = GameTransactionEntityFactoryImpl.createTestMutexEntity(GameTransactionEntityCauseImpl.attchment, RGTRedisService, RedisKey.player, union);
         testMutexEntity.getGameTransactionLockInterface().setContent(attchMent);
         GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.attchment, testMutexEntity);
         System.out.println(commitResult.getReuslt());
 
-        CommonReadTransactionEnity commonReadTransactionEnity = GameTransactionEntityFactoryImpl.createNormalCommonReadTransactionEnity(GameTransactionEntityCauseImpl.attchment, redisService, RedisKey.player, union);
+        CommonReadTransactionEnity commonReadTransactionEnity = GameTransactionEntityFactoryImpl.createNormalCommonReadTransactionEnity(GameTransactionEntityCauseImpl.attchment, RGTRedisService, RedisKey.player, union);
         commonReadTransactionEnity.getGameTransactionLockInterface().setContent(attchMent);
         commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEnity);
         System.out.println(commitResult.getReuslt());

@@ -7,13 +7,13 @@ import org.jdom.DataConversionException;
  */
 public class RedisServiceTest {
     public static void main(String[] args) throws DataConversionException {
-        ConfigService configService = new ConfigService();
-        RedisService redisService = new RedisService();
-        redisService.setJedisPool(configService.initRedis(configService.initRediPoolConfig()));
+        RGTConfigService RGTConfigService = new RGTConfigService();
+        RGTRedisService RGTRedisService = new RGTRedisService();
+        RGTRedisService.setJedisPool(RGTConfigService.initRedis(RGTConfigService.initRediPoolConfig()));
 
         String testKey = "ketest100";
-        redisService.setString(testKey, "100");
-        String number = redisService.getString(testKey);
+        RGTRedisService.setString(testKey, "100");
+        String number = RGTRedisService.getString(testKey);
         System.out.println(number);
     }
 }

@@ -8,7 +8,6 @@ import com.redis.transaction.lock.GameTransactionLock;
 import com.redis.transaction.lock.GameTransactionLockInterface;
 import com.redis.transaction.lock.GameTransactionReadLock;
 import com.redis.transaction.service.IRedisService;
-import com.redis.transaction.service.RedisService;
 import org.slf4j.Logger;
 
 import java.util.BitSet;

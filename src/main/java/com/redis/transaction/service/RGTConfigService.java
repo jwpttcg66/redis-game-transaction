@@ -12,7 +12,7 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * Created by jiangwenping on 16/11/29.
  */
-public class ConfigService {
+public class RGTConfigService {
 
     public JedisPoolConfig initRediPoolConfig() throws DataConversionException {
         Element element = JdomUtils.getRootElemet(FileUtil.getConfigURL(GlobalConstants.RedisConfigFile.REDIS_POOL_CONIFG).getFile());
